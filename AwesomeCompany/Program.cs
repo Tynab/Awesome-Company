@@ -13,15 +13,15 @@ builder.Services.ConfigureOptions<DatabaseOptionsSetup>();
 
 builder.Services.AddDbContext<DatabaseContext>((p, o) =>
 {
-    var databaseOptions = p.GetService<IOptions<DatabaseOptions>>()!.Value;
+    var databaseOptions = p.GetService<IOptions<DatabaseOptions>>()?.Value;
 
-    _ = o.UseSqlServer(databaseOptions.ConnectionString, a =>
+    _ = o.UseSqlServer(databaseOptions?.ConnectionString, a =>
     {
-        _ = a.EnableRetryOnFailure(databaseOptions.MaxRetryCount);
+        _ = a.EnableRetryOnFailure(databaseOptions!.MaxRetryCount);
         _ = a.CommandTimeout(databaseOptions.CommandTimeout);
     });
 
-    _ = o.EnableDetailedErrors(databaseOptions.EnableDetailedErrors);
+    _ = o.EnableDetailedErrors(databaseOptions!.EnableDetailedErrors);
     _ = o.EnableSensitiveDataLogging(databaseOptions.EnableSensitiveDataLogging);
 });
 
