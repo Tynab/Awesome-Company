@@ -1,2 +1,2 @@
-# Awesome-Company
+# AWESOME COMPANY
  Optimize database updates example.
