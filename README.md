@@ -1,2 +1,2 @@
 # Awesome-Company
- Optimize database updates example
+ Optimize database updates example.
